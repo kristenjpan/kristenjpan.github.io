@@ -56,6 +56,27 @@ ul.clean li{margin:6px 0}
 .role{border-left:4px solid var(--blue-mid);padding-left:18px;margin-top:24px}
 .role h3{margin:0;color:var(--navy)}
 
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.project{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(11,37,69,.06);transition:transform .25s ease,box-shadow .25s ease}
+.project:hover,.project:focus-within{box-shadow:0 14px 32px rgba(11,37,69,.16)}
+.project:hover{transform:translateY(-4px)}
+.project:focus-within{outline:3px solid var(--navy);outline-offset:3px}
+.shot{margin:16px 16px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--blue-soft);box-shadow:0 4px 12px rgba(11,37,69,.08)}
+.shot .bar{display:flex;gap:5px;align-items:center;height:20px;padding:0 10px;background:var(--blue-soft);border-bottom:1px solid var(--line)}
+.shot .bar i{width:7px;height:7px;border-radius:50%;background:var(--blue-mid);opacity:.6}
+.shot .view{overflow:hidden;aspect-ratio:16/10;background:var(--bg)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .25s ease}
+.project:hover .shot img{transform:scale(1.03)}
+.project .info{display:flex;flex-direction:column;flex:1;padding:22px 22px 24px}
+.project h3{margin:0 0 8px;color:var(--navy);font-size:1.15rem}
+.project p{margin:0 0 16px;color:var(--ink);font-size:.95rem}
+.project .tag{align-self:flex-start;margin:0 0 18px;background:var(--bg);border:1px solid var(--line);color:var(--muted);font-weight:500}
+.project .visit{margin-top:auto;font-weight:600;color:var(--accent);text-decoration:none}
+.project .visit::after{content:"";position:absolute;inset:0;z-index:1}
+.project .visit:hover{text-decoration:underline}
+.project .visit:focus-visible{outline:none}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
 details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:14px}
 summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::after{content:"+";font-size:1.3rem;line-height:1}
@@ -70,11 +91,13 @@ details .body{padding:0 20px 18px}
 footer{margin-top:64px;background:var(--navy);color:#dbe9f4;padding:36px 0}
 footer a{color:var(--blue)}
 .top{float:right}
+@media (max-width:920px){.projects{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.projects{grid-template-columns:1fr}}
 @media (max-width:640px){
   nav .brand{display:none}
   header.hero{padding:48px 0 56px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}.project,.shot img{transition:none}.project:hover{transform:none}.project:hover .shot img{transform:none}}
 </style>
 </head>
 <body>
@@ -87,6 +110,7 @@ footer a{color:var(--blue)}
       <li><a href="#education">Education</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#more">Skills &amp; Interests</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -197,6 +221,53 @@ footer a{color:var(--blue)}
           <li>Recruited 120 new members and maintained close contact with non-profit organizations.</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-proj" id="projects">
+    <h2 id="h-proj">Things I've Built</h2>
+    <p class="sub">Side projects where I turn everyday problems into simple, useful tools.</p>
+    <div class="projects">
+
+      <article class="project">
+        <div class="shot">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="view"><img src="assets/projects/daily-digest.webp" width="1200" height="750" loading="lazy" alt="Homepage of The Daily Digest"></div>
+        </div>
+        <div class="info">
+          <h3>The Daily Digest</h3>
+          <p>A free daily briefing on private equity, hedge funds, family offices, and the markets. Each morning it picks the stories that matter and explains them in plain English, with a key takeaway.</p>
+          <span class="tag">Built with Claude Code · Vercel</span>
+          <a class="visit" href="https://businessdigest.vercel.app/" target="_blank" rel="noopener noreferrer">Visit site<span class="vh"> for The Daily Digest (opens in a new tab)</span> →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="shot">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="view"><img src="assets/projects/cardwise.webp" width="1200" height="750" loading="lazy" alt="Homepage of Cardwise"></div>
+        </div>
+        <div class="info">
+          <h3>Cardwise</h3>
+          <p>Compare US and Taiwan credit cards side by side, including fees, rewards, and lounge access, without learning the jargon first.</p>
+          <span class="tag">Built with Lovable</span>
+          <a class="visit" href="https://pickyourcard.lovable.app/" target="_blank" rel="noopener noreferrer">Visit site<span class="vh"> for Cardwise (opens in a new tab)</span> →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="shot">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="view"><img src="assets/projects/sort-your-life-out.webp" width="1200" height="750" loading="lazy" alt="Homepage of Sort Your Life Out"></div>
+        </div>
+        <div class="info">
+          <h3>Sort Your Life Out</h3>
+          <p>A brain-dump to-do app. Drop every messy task on the page and it sorts the chaos so your head feels lighter.</p>
+          <span class="tag">Built with Lovable</span>
+          <a class="visit" href="https://sortyourlifeout.lovable.app/" target="_blank" rel="noopener noreferrer">Visit site<span class="vh"> for Sort Your Life Out (opens in a new tab)</span> →</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
